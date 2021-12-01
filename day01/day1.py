@@ -12,7 +12,7 @@ increased = 0
 for i in range(1, len(data)):
     if data[i] > data[i - 1]:
         increased += 1
-print('Increased %d times.' % increased)
+print('Part 1: increased %d times.' % increased)
 
 #
 # Part 2
@@ -22,4 +22,4 @@ increased = 0
 for i in range(4, len(data) + 1):
     if sum(data[i - 4 : i - 1]) < sum(data[i - 3 : i]):
         increased += 1
-print('Increased %d times.' % increased)
+print('Part 2: increased %d times.' % increased)
