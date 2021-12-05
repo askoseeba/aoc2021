@@ -25,16 +25,8 @@ def vent_map(data):
 
     return _vent_map
 
-#
-# Part 1
-#
-
 vents = vent_map(data[(data[:, 0] == data[:, 2]) | (data[:, 1] == data[:, 3])])
 print('Part 1:', len(vents[vents >= 2]))
-
-#
-# Part 2
-#
 
 vents = vent_map(data)
 print('Part 2:', len(vents[vents >= 2]))
