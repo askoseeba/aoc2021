@@ -31,7 +31,7 @@ max_x    = max(max(data2[:, 0]), max(data2[:, 2]))
 max_y    = max(max(data2[:, 1]), max(data2[:, 3]))
 vent_map = np.zeros((max_y + 1, max_x + 1), dtype = int)
 
-for segment in data:
+for segment in data2:
     start_x, end_x = (segment[0], segment[2]) if segment[2] > segment[0] else (segment[2], segment[0])
     start_y, end_y = (segment[1], segment[3]) if segment[3] > segment[1] else (segment[3], segment[1])
     dx, dy         = segment[2] - segment[0], segment[3] - segment[1]
