@@ -80,6 +80,9 @@ def imag_to_2D(data):
     y_max = int(max({loc.imag for loc in data.keys()}))
     return [[data[x + y * 1j] for x in range(int(len(data.values()) / y_max) - 1)] for y in range(y_max + 1)]
 
+def is_in_2D(x, y, data):
+    return 0 <= y < len(data) and 0 <= x < len(data[0])
+
 def is_neighbour_2D_NESW_imag(loc1, loc2):
     return (loc1.real == loc2.real and abs(loc1.imag - loc2.imag) == 1) ^ (loc1.imag == loc2.imag and abs(loc1.real - loc2.real) == 1)
 
@@ -117,12 +120,12 @@ def neighbours_2D(x, y, data, is_sym = None, is_NESW = False, compare_fun = None
     directions = directions_2D_NESW if is_NESW else directions_2D
     if is_sym:
         return [data[y + direction['y']][x + direction['x']]
-                for direction in directions if data[y + direction['y']][x + direction['x']] == is_sym]
+                for direction in directions if is_in_2D(x + direction['x'], y + direction['y'], data) and data[y + direction['y']][x + direction['x']] == is_sym]
     elif compare_fun:
         return [data[y + direction['y']][x + direction['x']]
-                for direction in directions if compare_fun(data[y][x], data[y + direction['y']][x + direction['x']])]
+                for direction in directions if is_in_2D(x + direction['x'], y + direction['y'], data) and compare_fun(data[y][x], data[y + direction['y']][x + direction['x']])]
     else:
-        return [data[y + direction['y']][x + direction['x']] for direction in directions]
+        return [data[y + direction['y']][x + direction['x']] for direction in directions if is_in_2D(x + direction['x'], y + direction['y'], data)]
 
 def neighbours_3D(x, y, z, data, is_sym):
     active_neighbours = []
