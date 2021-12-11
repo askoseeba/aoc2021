@@ -13,9 +13,8 @@ def energy_up(locs):
             continue
         cavern[loc] += 1
         if cavern[loc] == 10:
-            if not flashed[loc]:
-                flashed[loc] = True
-                energy_up(aoc.neighbours_2D_imag(loc, cavern))
+            flashed[loc] = True
+            energy_up(aoc.neighbours_2D_imag(loc, cavern))
             cavern[loc] = 0
 
 flash_count      = 0
