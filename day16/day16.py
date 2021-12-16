@@ -122,7 +122,7 @@ def parse_packet(string):
     packet['parsed_len'] += plen
     return packet, string[packet['parsed_len']:]
 
-string = ''.join([str(bin(int(c, 16)))[2:].zfill(4) for c in data[0]])
+string = ''.join([bin(int(c, 16))[2:].zfill(4) for c in data[0]])
 packet, remaining_string = parse_packet(string)
 
 print('Part 1:', packet['version_sum'])
