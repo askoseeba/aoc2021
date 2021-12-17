@@ -4,7 +4,6 @@ x_min, x_max, y_min, y_max = 185, 221, -122, -74  # Live data
 max_height = sum([ys for ys in range(abs(y_min))])
 print('Part 1:', max_height)
 
-y_speed = abs(y_min)
 def test_speed(speed_x, speed_y):
     cur_x, cur_y = 0, 0
     while cur_x <= x_max and y_min <= cur_y <= max_height:
