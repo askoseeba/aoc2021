@@ -69,8 +69,6 @@ def slice_cuboid(cuboid, overlap, is_on):
 def volume(cuboid):
     return (cuboid[2] - cuboid[1] + 1) * (cuboid[4] - cuboid[3] + 1) * (cuboid[6] - cuboid[5] + 1)
 
-small_cuboids = [cuboid for cuboid in data if cuboid[1] >= -50 and cuboid[2] <= 50 and cuboid[3] >= -50 and cuboid[4] <= 50 and cuboid[5] >= -50 and cuboid[6] <= 50]
-
 cuboids = []
 for new_cuboid in data:
     new_cuboids = []
