@@ -44,7 +44,7 @@ def cuboid_overlap(cub1, cub2, overlap_on):
     olz = segment_overlap(cub1[5:],  cub2[5:])
     return [overlap_on] + olx + oly + olz if olx and oly and olz else None
 
-def slice_cuboid(cuboid, overlap, is_on):
+def slice_cuboid(cuboid, overlap):
     slices = []
     if cuboid[1] < overlap[1]: # Lower x
         slices.append([cuboid[0], cuboid[1],      overlap[1] - 1, cuboid[3],      cuboid[4],      cuboid[5],      cuboid[6]])
@@ -75,7 +75,7 @@ for new_cuboid in data:
     for cuboid in cuboids:
         olc = cuboid_overlap(new_cuboid, cuboid, new_cuboid[0])
         if olc:
-            new_cuboids += slice_cuboid(cuboid, olc, new_cuboid[0])
+            new_cuboids += slice_cuboid(cuboid, olc)
         else:
             new_cuboids.append(cuboid)
     cuboids = new_cuboids
