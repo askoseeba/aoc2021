@@ -49,7 +49,7 @@ def slice_cuboid(cuboid, overlap):
     if cuboid[1] < overlap[1]: # Lower x
         slices.append([cuboid[0], cuboid[1],      overlap[1] - 1, cuboid[3],      cuboid[4],      cuboid[5],      cuboid[6]])
         cuboid[1] = overlap[1]
-    if cuboid[2] > overlap[1]: # Upper x
+    if cuboid[2] > overlap[2]: # Upper x
         slices.append([cuboid[0], overlap[2] + 1, cuboid[2],      cuboid[3],      cuboid[4],      cuboid[5],      cuboid[6]])
         cuboid[2] = overlap[2]
     if cuboid[3] < overlap[3]: # Lower y
