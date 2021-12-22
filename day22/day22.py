@@ -34,11 +34,6 @@ print('Part 1:', np.sum(core))
 # Part 2 -- execution time 3.7 seconds.
 #
 
-with open(fname) as f:
-    data = [sum([[1 if line[0] == 'on' else 0], sum([list(map(int, cuboid[2:].split('..')))
-                                                     for cuboid in line[1].split(',')], [])], [])
-            for line in [line.split(' ') for line in f.read().rstrip().split('\n')]]
-
 def segment_overlap(seg1, seg2):
     start, stop = max(seg1[0], seg2[0]), min(seg1[1], seg2[1])
     return [start, stop] if start <= stop else None
